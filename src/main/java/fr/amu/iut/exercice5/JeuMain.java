@@ -6,9 +6,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 public class JeuMain extends Application {
-
     private Scene scene;
     private BorderPane root;
 
@@ -40,13 +38,13 @@ public class JeuMain extends Application {
         primaryStage.show();
     }
 
-    /**
-     * Permet de gérer les événements de type clavier, pression des touches
-     * pour le j1(up,down, right, left), pour le j2( z,q,s,d)
-     *
-     * @param j1
-     * @param j2
-     */
+
+//*
+//     * Permet de gérer les événements de type clavier, pression des touches
+//     * pour le j1(up,down, right, left), pour le j2( z,q,s,d)
+//     *
+//     * @param j1
+//     * @param j2
     private void deplacer(Personnage j1, Personnage j2) {
         scene.setOnKeyPressed((KeyEvent event) -> {
             switch (event.getCode()) {
@@ -56,7 +54,24 @@ public class JeuMain extends Application {
                 case RIGHT:
                     j1.deplacerADroite(scene.getWidth());
                     break;
+                case UP:
+                    j1.deplacerEnHaut();
+                    break;
+                case DOWN:
+                    j1.deplacerEnBas(scene.getHeight());
+                    //j2...... vers le haut;
+                    break;
+                case Q:
+                    j2.deplacerAGauche();
+                    break;
+                case D:
+                    j2.deplacerADroite(scene.getWidth());
+                    break;
                 case Z:
+                    j2.deplacerEnHaut();
+                    break;
+                case S:
+                    j2.deplacerEnBas(scene.getHeight());
                     //j2...... vers le haut;
                     break;
 
@@ -65,6 +80,4 @@ public class JeuMain extends Application {
                 System.out.println("Collision....");
         });
     }
-
-
 }
